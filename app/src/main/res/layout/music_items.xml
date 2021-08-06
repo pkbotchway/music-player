@@ -3,21 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#111111"
+    android:background="@color/colorPrimaryDark"
+    android:layout_marginTop="5dp"
     android:id="@+id/musicList">
 
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:id="@+id/musicImg"
-        android:background="@drawable/ic_launcher_background"
+        android:id="@+id/music_img"
+        android:src="@mipmap/ic_launcher_round"
         android:padding="5dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/musicName"
+        android:id="@+id/music_file_name"
         android:text="Audio File Name"
-        android:layout_toEndOf="@+id/musicImg"
+        android:layout_toEndOf="@+id/music_img"
         android:layout_marginStart="15dp"
         android:layout_centerVertical="true"
         android:textColor="@color/colorPrimaryLight"/>
