@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         permission();
-        initViewPager();
+
     }
 
     private void permission() {
@@ -51,8 +51,9 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
             musicFiles = getAllAudio(this);
+            initViewPager();
         }
     }
 
@@ -63,8 +64,9 @@ public class MainActivity extends AppCompatActivity {
         {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
             {
-                Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
                 musicFiles = getAllAudio(this);
+                initViewPager();
             }
             else
             {
