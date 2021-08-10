@@ -34,7 +34,7 @@
             android:layout_toStartOf="@+id/menuBtn"
             android:gravity="center_horizontal"
             android:background="@android:color/transparent"
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:textStyle="bold"/>
         <ImageView
             android:layout_width="30dp"
@@ -47,8 +47,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="500dp"
         android:id="@+id/card"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:layout_below="@+id/layoutTopButton">
 
         <ImageView
@@ -59,7 +62,7 @@
             android:id="@+id/cover"/>
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="match_parent"
             android:id="@+id/imageViewGradient"
             android:src="@drawable/gradient_bg"
             android:layout_alignParentBottom="true"/>
@@ -73,6 +76,7 @@
         android:layout_below="@+id/card"
         android:textColor="@color/colorPrimaryLight"
         android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"
         android:textSize="20dp"
         android:textStyle="bold"
         android:singleLine="true"
@@ -173,7 +177,7 @@
             android:text="2:31"
             android:id="@+id/durationTotal"
             android:textColor="@color/colorPrimaryLight"
-            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_alignParentEnd="true"/>
         <SeekBar
             android:layout_width="match_parent"
