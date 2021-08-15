@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int REQUEST_CODE = 1;
     static ArrayList<MusicFiles> musicFiles;
+    static boolean shuffBool = false, repBool = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
