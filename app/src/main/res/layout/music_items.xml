@@ -20,8 +20,16 @@
         android:text="Audio File Name"
         android:layout_toEndOf="@+id/music_img"
         android:layout_marginStart="15dp"
+        android:layout_toStartOf="@id/moreMenu"
         android:layout_centerVertical="true"
         android:textColor="@color/colorPrimaryLight"/>
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/moreMenu"
+        android:src="@drawable/ic_more"
+        android:layout_alignParentEnd="true"
+        android:padding="15dp"/>
 
 
 </RelativeLayout>
