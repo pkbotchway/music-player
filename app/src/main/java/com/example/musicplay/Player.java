@@ -26,8 +26,11 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import static com.example.musicplay.MainActivity.musicFiles;
+import static com.example.musicplay.MainActivity.repBool;
+import static com.example.musicplay.MainActivity.shuffBool;
 
 public class Player extends AppCompatActivity implements MediaPlayer.OnCompletionListener{
 
@@ -51,6 +54,7 @@ public class Player extends AppCompatActivity implements MediaPlayer.OnCompletio
         songName.setText(listSongs.get(position).getTitle());
         artiste.setText(listSongs.get(position).getArtist());
         mediaPlayer.setOnCompletionListener(this);
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
         {
             @Override
@@ -82,6 +86,35 @@ public class Player extends AppCompatActivity implements MediaPlayer.OnCompletio
                 handler.postDelayed(this, 1000);
             }
         });
+
+        shuffle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (shuffBool){
+                    shuffBool = false;
+                    shuffle.setImageResource(R.drawable.ic_shuffle_off);
+                }
+                else{
+                    shuffBool = true;
+                    shuffle.setImageResource(R.drawable.ic_shuffle_on);
+                }
+            }
+        });
+        repeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(repBool){
+                    repBool = false;
+                    repeat.setImageResource(R.drawable.ic_repeat_off);
+                }
+                else{
+                    repBool = true;
+                    repeat.setImageResource(R.drawable.ic_repeat_on);
+                }
+            }
+        });
+
+
     }
 
     @Override
@@ -112,7 +145,12 @@ public class Player extends AppCompatActivity implements MediaPlayer.OnCompletio
         if(mediaPlayer.isPlaying()){
             mediaPlayer.stop();
             mediaPlayer.release();
-            position = ((position + 1) % listSongs.size());
+            if (shuffBool && !repBool){
+                position = random(listSongs.size() - 1);
+            }
+            else if (!shuffBool && !repBool){
+                position = ((position + 1) % listSongs.size());
+            }
             uri = Uri.parse(listSongs.get(position).getPath());
             mediaPlayer = MediaPlayer.create(getApplicationContext(), uri);
             metaData(uri);
@@ -134,10 +172,14 @@ public class Player extends AppCompatActivity implements MediaPlayer.OnCompletio
             mediaPlayer.start();
         }
         else{
-            mediaPlayer.setOnCompletionListener(this);
             mediaPlayer.stop();
             mediaPlayer.release();
-            position = ((position + 1) % listSongs.size());
+            if (shuffBool && !repBool){
+                position = random(listSongs.size() - 1);
+            }
+            else if (!shuffBool && !repBool){
+                position = ((position + 1) % listSongs.size());
+            }
             uri = Uri.parse(listSongs.get(position).getPath());
             mediaPlayer = MediaPlayer.create(getApplicationContext(), uri);
             metaData(uri);
@@ -154,8 +196,14 @@ public class Player extends AppCompatActivity implements MediaPlayer.OnCompletio
                     handler.postDelayed(this, 1000);
                 }
             });
+            mediaPlayer.setOnCompletionListener(this);
             pausePlay.setBackgroundResource(R.drawable.ic_play);
         }
+    }
+
+    private int random(int i) {
+        Random random = new Random();
+        return random.nextInt(i + 1);
     }
 
     private void prevThreadBtn() {
