@@ -1,6 +1,7 @@
 package com.example.musicplay;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaMetadataRetriever;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,15 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.MyHolder> {
                     .load(R.drawable.m_icon)
                     .into(holder.aCover);
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, AlbumDetails.class);
+                intent.putExtra("albumName", albumFiles.get(position).getAlbum());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
