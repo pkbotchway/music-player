@@ -28,6 +28,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static com.example.musicplay.AlbumDetailsAdapter.albumFiles;
 import static com.example.musicplay.MainActivity.musicFiles;
 import static com.example.musicplay.MainActivity.repBool;
 import static com.example.musicplay.MainActivity.shuffBool;
@@ -398,6 +399,13 @@ public class Player extends AppCompatActivity implements MediaPlayer.OnCompletio
 
     private void getIntentMethod() {
         position = getIntent().getIntExtra("position", -1);
+        String sender = getIntent().getStringExtra("sender");
+        if (sender != null && sender.equals("albumDetails")) {
+            listSongs = albumFiles;
+        }
+        else {
+            listSongs = musicFiles;
+        }
         listSongs = musicFiles;
         if(listSongs != null){
             pausePlay.setImageResource(R.drawable.ic_pause);
