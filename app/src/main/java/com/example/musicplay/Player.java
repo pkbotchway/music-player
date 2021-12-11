@@ -32,6 +32,7 @@ import static com.example.musicplay.AlbumDetailsAdapter.albumFiles;
 import static com.example.musicplay.MainActivity.musicFiles;
 import static com.example.musicplay.MainActivity.repBool;
 import static com.example.musicplay.MainActivity.shuffBool;
+import static com.example.musicplay.MusicAdapter.mFiles;
 
 public class Player extends AppCompatActivity implements MediaPlayer.OnCompletionListener{
 
@@ -404,9 +405,9 @@ public class Player extends AppCompatActivity implements MediaPlayer.OnCompletio
             listSongs = albumFiles;
         }
         else {
-            listSongs = musicFiles;
+            listSongs = mFiles;
         }
-        listSongs = musicFiles;
+        //listSongs = musicFiles;
         if(listSongs != null){
             pausePlay.setImageResource(R.drawable.ic_pause);
             uri = Uri.parse(listSongs.get(position).getPath());
